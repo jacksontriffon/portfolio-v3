@@ -1,12 +1,22 @@
 import { HydrateClient } from "~/trpc/server";
-import { Headline } from "./_components/index.client";
+import { Bento, Headline } from "./_components/index.client";
+import { Particles } from "~/components/magicui/particles";
+import { Intro } from "./_components";
 
 export default async function Home() {
   return (
-    <HydrateClient>
-      <main className="flex min-h-screen flex-col items-center justify-center bg-[url(/paper.png)] text-white">
-        <Headline />
-      </main>
-    </HydrateClient>
+    <>
+      <HydrateClient>
+        <Particles
+          className="absolute h-screen w-screen opacity-50"
+          color="#522b2d"
+        />
+        <main className="2xs:px-4 flex min-h-screen flex-col gap-32 bg-[url(/paper.png)] px-1 pt-20 text-white">
+          <Intro />
+          <Headline />
+          <Bento />
+        </main>
+      </HydrateClient>
+    </>
   );
 }
