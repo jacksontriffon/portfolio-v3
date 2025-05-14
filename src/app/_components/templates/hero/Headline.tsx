@@ -1,9 +1,9 @@
 "use client";
 
 import { TextAnimate } from "~/components/magicui/text-animate";
-import { SparklesText } from "~/app/_components/index.client";
 import { CoolMode } from "~/components/magicui/cool-mode";
 import { AnimatedShinyText } from "~/components/magicui/animated-shiny-text";
+import { SparklesText } from "~/app/_components/atoms/SparklesText";
 import { useState } from "react";
 
 export const Headline = () => {
