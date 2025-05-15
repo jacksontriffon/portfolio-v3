@@ -7,7 +7,7 @@ const AusGovIcon: React.FC = () => (
     height={120}
     src="/adf/aus-gov-logo.svg"
     alt="Australian Government Logo"
-    className="h-20 w-20 origin-bottom-left transform-gpu text-neutral-700 transition-all duration-300 ease-in-out group-hover:scale-75"
+    className="text-antique-900 h-20 w-20 origin-bottom-left transform-gpu transition-all duration-300 ease-in-out group-hover:scale-75"
   />
 );
 export const ADFBentoCard = () => {
@@ -21,7 +21,7 @@ export const ADFBentoCard = () => {
             className=""
             width={3840}
             height={1080}
-            src={"/adf/topo-graph-bg6.png"}
+            src={"/adf/topo-graph-bg4.png"}
             alt="Topographical Map Wallpaper"
           />
           {/* <video
@@ -39,7 +39,8 @@ export const ADFBentoCard = () => {
               src="/adf/silly-but-relevant-ui-overlays.mov"
             /> */}
           {/* Gradient overlay */}
-          {/* <div className="absolute bottom-0 h-1/2 w-full bg-gradient-to-t from-white to-transparent" /> */}
+          <div className="bg-antique-50/20 absolute bottom-0 h-full w-full" />
+          <div className="from-antique-50 via-antique-50 absolute bottom-0 h-2/3 w-full bg-gradient-to-t to-transparent" />
         </div>
         // </div>
       }

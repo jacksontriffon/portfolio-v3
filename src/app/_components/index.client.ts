@@ -9,6 +9,6 @@ export * from "~/app/_components/molecules/ScratchMyFace";
 // --- Organisms ---
 // --- Templates ---
 export * from "~/app/_components/templates/hero/Headline";
-export * from "~/app/_components/templates/hero/Bento";
+export * from "~/app/_components/templates/bento/Bento";
 export * from "~/app/_components/templates/bento/ADFBentoCard";
 export * from "~/app/_components/templates/bento/GlobeBentoCard";

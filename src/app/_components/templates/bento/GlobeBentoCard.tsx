@@ -2,6 +2,9 @@
 import { LocationEditIcon } from "lucide-react";
 import { BentoCard } from "~/app/_components/molecules/BentoCard";
 import { Globe } from "~/app/_components/atoms/Globe";
+import { useState } from "react";
+import { Meteors } from "~/components/magicui/meteors";
+import { cn } from "~/lib/utils";
 
 const melbourneTime = new Date().toLocaleTimeString("en-US", {
   timeZone: "Australia/Melbourne",
@@ -11,22 +14,30 @@ const melbourneTime = new Date().toLocaleTimeString("en-US", {
 });
 
 export const GlobeBentoCard = () => {
+  const [apocalypseMode, setApocalypseMode] = useState(false);
   return (
     <BentoCard
       name={`Based in Melbourne - ${melbourneTime}`}
       background={
         <div className="relative">
-          {/* <Meteors number={50} /> */}
           <Globe className="-top-24 scale-255" />
+          {/* <Meteors
+            className={cn("-translate-60 transition-all duration-300", {
+              "opacity-100": apocalypseMode,
+              "opacity-0": !apocalypseMode,
+            })}
+            number={100}
+          /> */}
         </div>
       }
       className="text-antique-900 col-span-6 row-span-1 lg:col-span-2"
       cta="Apocalypse mode?"
       description="Flexible across timezones"
-      onClick={() => {
-        alert("How could you????????");
+      buttonProps={{
+        onClick: () => {
+          setApocalypseMode(!apocalypseMode);
+        },
       }}
-      href="https://www.worldtimebuddy.com/?pl=1&lid=2147714,1850147,2643743,5128581&h=2147714&hf=1"
       Icon={LocationEditIcon}
     />
   );
