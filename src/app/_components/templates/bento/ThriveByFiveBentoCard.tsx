@@ -41,7 +41,7 @@ export const ThriveByFiveBentoCard = () => {
           <div className="from-antique-50 via-antique-50 absolute bottom-0 h-2/3 w-full bg-gradient-to-t to-transparent" />
         </div>
       }
-      className="text-antique-900 col-span-3 lg:col-span-2"
+      className="text-antique-900 col-span-6 lg:col-span-2"
       cta="Learn More"
       description="Parental education in 3rd world countries."
       href="#thrive-by-five"

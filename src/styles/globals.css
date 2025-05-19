@@ -104,21 +104,21 @@
       background-position: calc(100% + var(--shiny-width)) 0;
     }
   }
-  --animate-meteor: meteor 5s linear infinite
-;
+  --animate-meteor: meteor 5s linear infinite;
   @keyframes meteor {
-  0% {
-    transform: rotate(var(--angle)) translateX(0);
-    opacity: 1;
+    0% {
+      transform: rotate(var(--angle)) translateX(0);
+      opacity: 1;
     }
-  70% {
-    opacity: 1;
+    70% {
+      opacity: 1;
     }
-  100% {
-    transform: rotate(var(--angle)) translateX(-500px);
-    opacity: 0;
+    100% {
+      transform: rotate(var(--angle)) translateX(-500px);
+      opacity: 0;
     }
-  }}
+  }
+}
 
 :root {
   --radius: 0.625rem;
@@ -200,3 +200,17 @@
     font-family: var(--font-zilla), ui-sans-serif, system-ui, sans-serif;
   }
 }
+
+/* Carousel - http://embla-carousel.com/get-started/react/ */
+.embla {
+  overflow: hidden;
+}
+.embla__container {
+  display: flex;
+}
+.embla__slide {
+  flex: 0 0 80%;
+  min-width: 0;
+}
+
+/* End of Carousel */

@@ -30,7 +30,7 @@ export const MeijiBentoCard = () => {
           <div className="from-antique-50 via-antique-50 absolute bottom-0 h-1/3 w-full bg-gradient-to-t to-transparent" />
         </>
       }
-      className="text-antique-900 col-span-3 row-span-2 lg:col-span-2"
+      className="text-antique-900 col-span-6 row-span-2 lg:col-span-2"
       cta="Explore Projects"
       description="Coupons, E-commerce, Health and Wellness"
       href="#meiji"
