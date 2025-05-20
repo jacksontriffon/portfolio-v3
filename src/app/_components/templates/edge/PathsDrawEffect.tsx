@@ -45,11 +45,7 @@ export const PathsDrawEffect: React.FC<Props> = ({
         </p>
       </div>
       <div className="flex justify-center">
-        <div className="relative w-full max-w-[1440px]">
-          {/* Left fade */}
-          <div className="pointer-events-none absolute top-0 left-0 z-10 h-full w-12 bg-gradient-to-r from-white to-transparent" />
-          {/* Right fade */}
-          <div className="pointer-events-none absolute top-0 right-0 z-10 h-full w-12 bg-gradient-to-l from-white to-transparent" />
+        <div className="relative h-full w-full">
           <svg
             width="1440"
             height="890"

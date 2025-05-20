@@ -1,21 +1,31 @@
 "use client";
 
-import { useRef } from "react";
+import { useEffect, useRef, type Ref } from "react";
 import { cn } from "~/lib/utils";
 
 interface HoverVideoProps {
   src: string;
   poster?: string;
   className?: string;
+  parentRef?: Ref<HTMLDivElement>;
 }
 
 export default function HoverVideo({
   src,
   poster,
   className,
+  parentRef,
 }: HoverVideoProps) {
-  const vidRef = useRef<HTMLVideoElement>(null);
+  useEffect(() => {
+    parent.onmouseenter = async (_) => {
+      await play();
+    };
+    parent.onmouseleave = (_) => {
+      pause();
+    };
+  }, [parentRef]);
 
+  const vidRef = useRef<HTMLVideoElement>(null);
   const play = () => vidRef.current?.play();
   const pause = () => {
     if (!vidRef.current) return;
