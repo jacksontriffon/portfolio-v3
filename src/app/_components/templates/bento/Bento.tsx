@@ -42,7 +42,7 @@ export const Bento = () => {
   ];
 
   return (
-    <div className="flex w-full justify-center">
+    <section className="flex w-full justify-center">
       <BentoGrid color="#fff7eb" className="max-w-7xl">
         <ADFBentoCard />
         <GlobeBentoCard />
@@ -52,6 +52,6 @@ export const Bento = () => {
           return <BentoCard key={feature.name + index} {...feature} />;
         })}
       </BentoGrid>
-    </div>
+    </section>
   );
 };

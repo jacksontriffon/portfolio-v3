@@ -1,6 +1,17 @@
 "use client";
 
-import { Box, Lock, Search, Settings, Sparkles } from "lucide-react";
+import { LightningBoltIcon } from "@radix-ui/react-icons";
+import {
+  Box,
+  HammerIcon,
+  HandshakeIcon,
+  Lock,
+  PaintbrushIcon,
+  Search,
+  SearchIcon,
+  Settings,
+  Sparkles,
+} from "lucide-react";
 import { GlowingEffect } from "~/components/ui/glowing-effect";
 
 export function ShinyBento() {
@@ -8,37 +19,37 @@ export function ShinyBento() {
     <ul className="grid grid-cols-1 grid-rows-none gap-4 md:grid-cols-12 md:grid-rows-3 lg:gap-4 xl:max-h-[34rem] xl:grid-rows-2">
       <GridItem
         area="md:[grid-area:1/1/2/7] xl:[grid-area:1/1/2/5]"
-        icon={<Box className="text-antique-900 h-4 w-4" />}
-        title="Do things the right way"
-        description="Running out of copy so I'll write anything."
+        icon={<LightningBoltIcon className="text-antique-900 h-4 w-4" />}
+        title="Rapid MVP Prototyping"
+        description="Launch-ready prototypes built quickly, without cutting corners on polish or clarity."
       />
 
       <GridItem
         area="md:[grid-area:1/7/2/13] xl:[grid-area:2/1/3/5]"
-        icon={<Settings className="text-antique-900 h-4 w-4" />}
-        title="The best AI code editor ever."
-        description="Yes, it's true. I'm not even kidding. Ask my mom if you don't believe me."
+        icon={<PaintbrushIcon className="text-antique-900 h-4 w-4" />}
+        title="UX-Led Engineering"
+        description="Design decisions baked into the codebase, cutting weeks of rework and confusion."
       />
 
       <GridItem
         area="md:[grid-area:2/1/3/7] xl:[grid-area:1/5/3/8]"
-        icon={<Lock className="text-antique-900 h-4 w-4" />}
-        title="You should buy Aceternity UI Pro"
-        description="It's the best money you'll ever spend"
+        icon={<HammerIcon className="text-antique-900 h-4 w-4" />}
+        title="End-to-End Product Development"
+        description="From idea to launch — I design, build, and ship complete digital products without needing a big team."
       />
 
       <GridItem
         area="md:[grid-area:2/7/3/13] xl:[grid-area:1/8/2/13]"
-        icon={<Sparkles className="text-antique-900 h-4 w-4" />}
-        title="This card is also built by Cursor"
-        description="I'm not even kidding. Ask my mom if you don't believe me."
+        icon={<SearchIcon className="text-antique-900 h-4 w-4" />}
+        title="Scope-Driven Tech Strategy"
+        description="Features are reduced to their essence — saving time, cost, and cognitive overhead."
       />
 
       <GridItem
         area="md:[grid-area:3/1/4/13] xl:[grid-area:2/8/3/13]"
-        icon={<Search className="text-antique-900 h-4 w-4" />}
-        title="Coming soon on Aceternity UI"
-        description="I'm writing the code as I record this, no shit."
+        icon={<HandshakeIcon className="text-antique-900 h-4 w-4" />}
+        title="Collaborative Product Partner"
+        description="Clear communication across design, product, and dev teams to ship smarter, faster."
       />
     </ul>
   );

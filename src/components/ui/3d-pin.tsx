@@ -2,6 +2,8 @@
 import React, { useState } from "react";
 import { motion } from "motion/react";
 import { cn } from "~/lib/utils";
+import { toast } from "sonner";
+import { DownloadIcon } from "lucide-react";
 
 export const PinContainer = ({
   children,
@@ -9,12 +11,14 @@ export const PinContainer = ({
   href,
   className,
   containerClassName,
+  onClick,
 }: {
   children: React.ReactNode;
   title?: string;
   href?: string;
   className?: string;
   containerClassName?: string;
+  onClick?: () => void;
 }) => {
   const [transform, setTransform] = useState(
     "translate(-50%,-50%) rotateX(0deg)",
@@ -33,6 +37,12 @@ export const PinContainer = ({
         "group/pin relative z-50 cursor-pointer",
         containerClassName,
       )}
+      onClick={() => {
+        toast("Resume Downloaded", {
+          icon: <DownloadIcon />,
+          dismissible: true,
+        });
+      }}
       download
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
