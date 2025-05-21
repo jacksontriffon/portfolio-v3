@@ -1,6 +1,8 @@
 "use client";
 import Image from "next/image";
 import { VideoBentoCard } from "../../molecules/VideoBentoCard";
+import type { CustomBentoCardProps } from "./Bento";
+import { cn } from "~/lib/utils";
 
 const MeijiIcon: React.FC = () => (
   <Image
@@ -12,7 +14,7 @@ const MeijiIcon: React.FC = () => (
   />
 );
 
-export const MeijiBentoCard = () => {
+export const MeijiBentoCard = ({ tall, wide }: CustomBentoCardProps) => {
   return (
     <VideoBentoCard
       videoSrc="/meiji/oldMeijiAd.mp4"
@@ -20,8 +22,12 @@ export const MeijiBentoCard = () => {
       cta="Explore Projects"
       description="Coupons, E-commerce, Health and Wellness"
       href="#meiji"
+      tall={tall}
       icon={MeijiIcon}
-      className="text-antique-900 col-span-6 row-span-2 lg:col-span-2"
+      className={cn("text-antique-900 col-span-6 lg:col-span-2", {
+        "row-span-2": tall,
+        "lg:col-span-4": wide,
+      })}
     />
   );
 };

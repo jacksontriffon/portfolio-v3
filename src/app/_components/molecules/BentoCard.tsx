@@ -4,6 +4,7 @@ import {
   type ComponentPropsWithoutRef,
   type ReactNode,
 } from "react";
+import { SpinningText } from "~/components/magicui/spinning-text";
 
 import { Button } from "~/components/ui/button";
 import { cn } from "~/lib/utils";
@@ -22,6 +23,7 @@ interface BentoCardProps extends ComponentProps<"div"> {
   href?: string;
   cta: string;
   buttonProps?: ComponentProps<"button">;
+  showPrompt?: boolean;
 }
 
 const BentoGrid = ({ children, className, ...props }: BentoGridProps) => {
@@ -47,6 +49,7 @@ const BentoCard = ({
   href,
   cta,
   buttonProps,
+  showPrompt,
   ...props
 }: BentoCardProps) => (
   <div
@@ -63,12 +66,22 @@ const BentoCard = ({
   >
     <div>{background}</div>
     <div className="pointer-events-none z-10 flex transform-gpu flex-col gap-1 p-6 transition-all duration-300 group-hover:-translate-y-10">
-      <div className="h-12 w-12 origin-left transform-gpu transition-all duration-300 ease-in-out group-hover:scale-75">
-        <Icon />
-      </div>
+      <Icon />
       <h3 className="text-xl font-semibold">{name}</h3>
       <p className="max-w-lg opacity-70">{description}</p>
     </div>
+    {/* Desktop Prompt */}
+    {showPrompt && (
+      <SpinningText className="text-antique-900 absolute z-10 hidden text-xs sm:right-8 sm:bottom-8 sm:block sm:text-base">
+        hover to play • hover to play •
+      </SpinningText>
+    )}
+    {/* Mobile Prompt*/}
+    {showPrompt && (
+      <SpinningText className="text-antique-900 absolute right-6 bottom-6 z-10 block text-xs sm:hidden">
+        press & hold • press & hold •
+      </SpinningText>
+    )}
 
     <div
       className={cn(
@@ -79,7 +92,7 @@ const BentoCard = ({
         variant="ghost"
         asChild
         size="sm"
-        className="pointer-events-auto cursor-pointer"
+        className="pointer-events-auto cursor-pointer hover:bg-white"
         {...buttonProps}
       >
         {href ? (

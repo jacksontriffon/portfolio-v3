@@ -11,6 +11,8 @@ interface VideoBentoCardProps {
   description: string;
   href: string;
   className?: string;
+  tall?: boolean;
+  showPrompt?: boolean;
 }
 
 export const VideoBentoCard: React.FC<VideoBentoCardProps> = ({
@@ -21,6 +23,8 @@ export const VideoBentoCard: React.FC<VideoBentoCardProps> = ({
   description,
   href,
   className,
+  tall,
+  showPrompt,
 }) => {
   const vidRef = useRef<HTMLVideoElement>(null);
 
@@ -44,7 +48,14 @@ export const VideoBentoCard: React.FC<VideoBentoCardProps> = ({
             className="h-full w-full object-cover"
           />
           <div className="bg-antique-50/20 absolute bottom-0 h-full w-full" />
-          <div className="from-antique-50 via-antique-50 absolute bottom-0 h-2/3 w-full bg-gradient-to-t to-transparent" />
+          <div
+            className={cn(
+              "from-antique-50/99 via-antique-50/90 absolute bottom-0 h-2/3 w-full bg-gradient-to-t to-transparent",
+              {
+                "h-1/3": tall,
+              },
+            )}
+          />
         </div>
       }
       onMouseEnter={play}
@@ -56,6 +67,7 @@ export const VideoBentoCard: React.FC<VideoBentoCardProps> = ({
       description={description}
       href={href}
       Icon={Icon}
+      showPrompt={showPrompt}
     />
   );
 };

@@ -70,7 +70,7 @@ export const EmailCta = () => {
       >
         Send Email?
       </InteractiveHoverButton>
-      <div className="col-span-19 flex w-full flex-col">
+      <div className="col-span-19 flex w-full flex-col items-center sm:items-start">
         <AnimatedSubscribeButton
           onClick={async () => {
             await copy(currentEmail);
