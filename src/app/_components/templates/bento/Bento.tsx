@@ -5,30 +5,32 @@ import {
 } from "~/components/magicui/bento-grid";
 import { ADFBentoCard } from "~/app/_components/templates/bento/ADFBentoCard";
 import { GlobeBentoCard } from "~/app/_components/templates/bento/GlobeBentoCard";
-import { ThriveByFiveBentoCard } from "~/app/_components/templates/bento/ThriveByFiveBentoCard";
+import { EdTechBentoCard } from "~/app/_components/templates/bento/EdTechBentoCard";
 import { MeijiBentoCard } from "~/app/_components/templates/bento/MeijiBentoCard";
+import { GameStudioBentoCard } from "./GameStudioBentoCard";
+import { AIProjectsBentoCard } from "./AIProjectsBentoCard";
 
 export const Bento = () => {
   const features: BentoCardProps[] = [
-    {
-      name: "Ed Tech & Localisation",
-      background: <></>,
-      className: "col-span-6 lg:col-span-2 text-antique-900",
-      cta: "View Extensions",
-      description:
-        "Chrome extensions to assist in navigating the world around us. ",
-      href: "",
-      Icon: "a",
-    },
-    {
-      name: "Projects with Artificial Intelligence",
-      background: <></>,
-      className: "col-span-6 lg:col-span-4 text-antique-900",
-      cta: "",
-      description: "Building the future with every tool I can find.",
-      href: "",
-      Icon: "a",
-    },
+    // {
+    //   name: "Ed Tech",
+    //   background: <></>,
+    //   className: "col-span-6 lg:col-span-2 text-antique-900",
+    //   cta: "View Extensions",
+    //   description:
+    //     "Chrome extensions to assist in navigating the world around us. ",
+    //   href: "",
+    //   Icon: "a",
+    // },
+    // {
+    //   name: "Projects with Artificial Intelligence",
+    //   background: <></>,
+    //   className: "col-span-6 lg:col-span-4 text-antique-900",
+    //   cta: "",
+    //   description: "Building the future with every tool I can find.",
+    //   href: "",
+    //   Icon: "a",
+    // },
     // {
     //   name: "Vyfrost - Indie Game Studio",
     //   background: <></>,
@@ -47,7 +49,9 @@ export const Bento = () => {
         <ADFBentoCard />
         <GlobeBentoCard />
         <MeijiBentoCard />
-        <ThriveByFiveBentoCard />
+        <EdTechBentoCard />
+        <GameStudioBentoCard />
+        <AIProjectsBentoCard />
         {features.map((feature, index) => {
           return <BentoCard key={feature.name + index} {...feature} />;
         })}

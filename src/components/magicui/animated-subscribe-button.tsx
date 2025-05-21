@@ -1,7 +1,7 @@
 "use client";
 
 import { cn } from "~/lib/utils";
-import { HTMLMotionProps } from "motion/react";
+import { type HTMLMotionProps } from "motion/react";
 import { AnimatePresence, motion } from "motion/react";
 import React, { useState } from "react";
 
@@ -43,7 +43,7 @@ export const AnimatedSubscribeButton = React.forwardRef<
           <motion.button
             ref={ref}
             className={cn(
-              "relative flex h-10 w-fit items-center justify-center overflow-hidden rounded-lg bg-primary px-6 text-primary-foreground",
+              "bg-primary text-primary-foreground relative flex h-10 w-fit items-center justify-center overflow-hidden rounded-lg px-6",
               className,
             )}
             onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
@@ -68,7 +68,7 @@ export const AnimatedSubscribeButton = React.forwardRef<
           <motion.button
             ref={ref}
             className={cn(
-              "relative flex h-10 w-fit cursor-pointer items-center justify-center rounded-lg border-none bg-primary px-6 text-primary-foreground",
+              "bg-primary text-primary-foreground relative flex h-10 w-fit cursor-pointer items-center justify-center rounded-lg border-none px-6",
               className,
             )}
             onClick={(e) => {
