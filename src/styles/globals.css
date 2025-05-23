@@ -201,16 +201,7 @@
   }
 }
 
-/* Carousel - http://embla-carousel.com/get-started/react/ */
-.embla {
-  overflow: hidden;
+html {
+  max-width: 100vw;
+  overflow-x: hidden;
 }
-.embla__container {
-  display: flex;
-}
-.embla__slide {
-  flex: 0 0 80%;
-  min-width: 0;
-}
-
-/* End of Carousel */

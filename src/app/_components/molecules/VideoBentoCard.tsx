@@ -1,6 +1,6 @@
 "use client";
 import { BentoCard } from "~/app/_components/molecules/BentoCard";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { cn } from "~/lib/utils";
 
 interface VideoBentoCardProps {
@@ -27,12 +27,17 @@ export const VideoBentoCard: React.FC<VideoBentoCardProps> = ({
   showPrompt,
 }) => {
   const vidRef = useRef<HTMLVideoElement>(null);
+  const [playing, setPlaying] = useState(false);
 
-  const play = () => vidRef.current?.play();
+  const play = () => {
+    setPlaying(true);
+    void vidRef.current?.play();
+  };
   const pause = () => {
     if (!vidRef.current) return;
     vidRef.current.pause();
     vidRef.current.currentTime = 0;
+    setPlaying(false);
   };
 
   return (
@@ -45,7 +50,12 @@ export const VideoBentoCard: React.FC<VideoBentoCardProps> = ({
             src={videoSrc}
             muted
             loop
-            className="h-full w-full object-cover"
+            className={cn(
+              "h-full w-full object-cover transition duration-500 ease-in-out",
+              {
+                "opacity-40 grayscale filter": !playing,
+              },
+            )}
           />
           <div className="bg-antique-50/20 absolute bottom-0 h-full w-full" />
           <div

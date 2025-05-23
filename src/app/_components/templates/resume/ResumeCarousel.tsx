@@ -1,5 +1,4 @@
 import { CanvasRevealEffect } from "~/components/ui/canvas-reveal-effect";
-// import { SwipeCarousel } from "./Carousel";
 import { ImageCarousel } from "../../molecules/Carousel/Carousel";
 import { SwipeCarousel } from "./Carousel";
 
