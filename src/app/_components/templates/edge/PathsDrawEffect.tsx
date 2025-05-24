@@ -3,7 +3,6 @@
 import React from "react";
 import { motion, type MotionValue } from "motion/react";
 import { cn } from "~/lib/utils";
-import { Button } from "~/components/ui/button";
 
 interface Props {
   pathLengths: MotionValue<number>[];
