@@ -68,7 +68,7 @@ export const Projects = () => {
       <div
         className={cn(
           "absolute z-10 h-full w-full",
-          "bg-[radial-gradient(700px_circle_at_center,rgba(255,255,255,0.8),rgba(255,255,255,0.1))]",
+          "bg-[radial-gradient(700px_circle_at_center,rgba(255,255,255,1),rgba(255,255,255,0.8),rgba(255,255,255,0.1))]",
           /* the tint that will do the fading -- tweak the opacity to taste */
           // "bg-neutral-900/2",
           /* radial mask: white (1 = fully show the tint) → transparent (0 = no tint) */
