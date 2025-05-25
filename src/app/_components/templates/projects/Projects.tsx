@@ -69,7 +69,7 @@ export const Projects = () => {
       </div>
       <div
         className={cn(
-          "absolute z-10 h-full w-full",
+          "pointer-events-none absolute z-10 h-full w-full",
           "sm:bg-[radial-gradient(700px_circle_at_center,rgba(255,255,255,1),rgba(255,255,255,0.8),rgba(255,255,255,0.1))]",
           "bg-[radial-gradient(200px_circle_at_center,rgba(255,255,255,1),rgba(255,255,255,0.8),rgba(255,255,255,0.1))]",
         )}
