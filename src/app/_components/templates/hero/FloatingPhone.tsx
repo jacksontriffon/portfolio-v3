@@ -72,7 +72,7 @@ const Screen = () => {
             >
               <Image
                 className="w-48"
-                src={"/QR code Black.svg"}
+                src={"/qr.svg"}
                 alt="QR Code"
                 width={1000}
                 height={1000}
