@@ -3,8 +3,9 @@
 import { IconArrowLeft, IconArrowRight } from "@tabler/icons-react";
 import { motion, AnimatePresence } from "motion/react";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 import { useInterval } from "usehooks-ts";
+import { TextAnimate } from "../magicui/text-animate";
 
 export type Testimonial = {
   quote: string;
@@ -12,9 +13,10 @@ export type Testimonial = {
   designation: string;
   src: string;
   type: "video" | "image";
-  tags?: string[];
   title: string;
   subtitle: string;
+  tags?: string[];
+  buttonOrLink?: ReactNode;
 };
 export const AnimatedTestimonials = ({
   testimonials,
@@ -145,7 +147,7 @@ export const AnimatedTestimonials = ({
             </AnimatePresence>
           </div>
         </div>
-        <div className="flex flex-col justify-between py-4">
+        <div className="flex flex-col justify-between pt-4">
           <motion.div
             key={active}
             initial={{
@@ -171,31 +173,15 @@ export const AnimatedTestimonials = ({
             <p className="text-antique-500 text-xs dark:text-neutral-500">
               {testimonials[active]?.subtitle}
             </p>
-            <motion.p className="text-antique-500 mt-4 text-sm dark:text-neutral-300">
-              {testimonials[active]?.quote.split(" ").map((word, index) => (
-                <motion.span
-                  key={index}
-                  initial={{
-                    filter: "blur(10px)",
-                    opacity: 0,
-                    y: 5,
-                  }}
-                  animate={{
-                    filter: "blur(0px)",
-                    opacity: 1,
-                    y: 0,
-                  }}
-                  transition={{
-                    duration: 0.2,
-                    ease: "easeInOut",
-                    delay: 0.02 * index,
-                  }}
-                  className="inline-block"
-                >
-                  {word}&nbsp;
-                </motion.span>
-              ))}
-            </motion.p>
+            <TextAnimate
+              className="text-antique-500 mt-4 text-sm whitespace-pre-line"
+              animation="blurIn"
+              by="word"
+              duration={1}
+            >
+              {testimonials[active]?.quote ?? ""}
+            </TextAnimate>
+            {testimonials[active]?.buttonOrLink}
             <div className="flex flex-wrap gap-2 pt-4">
               {testimonials[active]?.tags?.map((tag, i) => (
                 <motion.div
@@ -214,27 +200,32 @@ export const AnimatedTestimonials = ({
                     ease: "easeInOut",
                     delay: 1 + 0.1 * i,
                   }}
-                  className="bg-antique-500 rounded px-1 py-1"
+                  className="border-antique-100 rounded border px-1 py-1"
                   key={tag + testimonials[active]?.name}
                 >
-                  <p className="text-xs text-white">{tag}</p>
+                  <p className="text-antique-500 text-xs font-medium">{tag}</p>
                 </motion.div>
               ))}
             </div>
           </motion.div>
-          <div className="flex gap-4 pt-12 md:pt-0">
-            <button
-              onClick={handlePrev}
-              className="group/button border-antique-200 hover:outline-antique-200 flex h-7 w-7 cursor-pointer items-center justify-center rounded-full border hover:outline hover:outline-offset-2 focus:outline-4"
-            >
-              <IconArrowLeft className="text-antique-900 h-5 w-5 transition-transform duration-300 group-hover/button:rotate-12 dark:text-neutral-400" />
-            </button>
-            <button
-              onClick={handleNext}
-              className="group/button hover:outline-antique-200 border-antique-200 flex h-7 w-7 cursor-pointer items-center justify-center rounded-full border hover:outline hover:outline-offset-2 focus:outline-4"
-            >
-              <IconArrowRight className="text-antique-900 h-5 w-5 transition-transform duration-300 group-hover/button:-rotate-12 dark:text-neutral-400" />
-            </button>
+          <div className="flex items-end justify-between">
+            <div className="flex gap-4 pt-16 md:pt-8">
+              <button
+                onClick={handlePrev}
+                className="group/button border-antique-200 hover:outline-antique-200 flex h-7 w-7 cursor-pointer items-center justify-center rounded-full border hover:outline hover:outline-offset-2 focus:outline-4"
+              >
+                <IconArrowLeft className="text-antique-900 h-5 w-5 transition-transform duration-300 group-hover/button:rotate-12 dark:text-neutral-400" />
+              </button>
+              <button
+                onClick={handleNext}
+                className="group/button hover:outline-antique-200 border-antique-200 flex h-7 w-7 cursor-pointer items-center justify-center rounded-full border hover:outline hover:outline-offset-2 focus:outline-4"
+              >
+                <IconArrowRight className="text-antique-900 h-5 w-5 transition-transform duration-300 group-hover/button:-rotate-12 dark:text-neutral-400" />
+              </button>
+            </div>
+            <p className="text-antique-900">
+              {active + 1} / {testimonials.length}
+            </p>
           </div>
         </div>
       </div>

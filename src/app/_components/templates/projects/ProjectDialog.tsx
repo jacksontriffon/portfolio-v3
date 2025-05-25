@@ -34,9 +34,9 @@ export function ProjectDialog() {
         <div className="py-4">
           <ProjectTestimonials />
         </div>
-        <DialogFooter>
-          <Button className="bg-antique-900">Ask Question</Button>
-        </DialogFooter>
+        {/* <DialogFooter>
+          <Button className="bg-antique-900">Send Email</Button>
+        </DialogFooter> */}
       </DialogContent>
     </Dialog>
   );
