@@ -73,5 +73,5 @@ export function ProjectTestimonials() {
       ),
     },
   ];
-  return <AnimatedTestimonials autoplay={false} testimonials={testimonials} />;
+  return <AnimatedTestimonials testimonials={testimonials} />;
 }
