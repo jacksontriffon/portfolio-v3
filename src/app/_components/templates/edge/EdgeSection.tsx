@@ -6,13 +6,13 @@ export const Edge = () => {
   return (
     <div className="relative w-full">
       <div>
-        <Image
+        {/* <Image
           src={"/edge/Figma.svg"}
           width={40}
           height={40}
           alt="Figma logo"
           className="absolute w-7 translate-y-9"
-        />
+        /> */}
         <PathsDraw />
       </div>
       <div className="absolute -top-6 flex w-full flex-col items-center justify-center">

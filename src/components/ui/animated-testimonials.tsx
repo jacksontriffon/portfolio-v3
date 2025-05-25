@@ -12,6 +12,9 @@ export type Testimonial = {
   designation: string;
   src: string;
   type: "video" | "image";
+  tags?: string[];
+  title: string;
+  subtitle: string;
 };
 export const AnimatedTestimonials = ({
   testimonials,
@@ -21,6 +24,7 @@ export const AnimatedTestimonials = ({
   autoplay?: boolean;
 }) => {
   const [active, setActive] = useState(0);
+  const [delay, setDelay] = useState<number | null>(autoplay ? 10_000 : null);
 
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
 
@@ -39,26 +43,35 @@ export const AnimatedTestimonials = ({
     });
   }, [active]);
 
+  /** Clear current timer → start a fresh one */
+  const restartTimer = () => {
+    if (!autoplay) return;
+    setDelay(null);
+    setTimeout(() => setDelay(10_000), 0);
+  };
+
   const handleNext = () => {
     setActive((prev) => (prev + 1) % testimonials.length);
+    restartTimer();
   };
 
   const handlePrev = () => {
     setActive((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+    restartTimer();
   };
 
   const isActive = (index: number) => {
     return index === active;
   };
 
-  useInterval(handleNext, autoplay ? 10000 : null);
+  useInterval(handleNext, delay);
 
   const randomRotateY = () => {
     return Math.floor(Math.random() * 21) - 10;
   };
   return (
-    <div className="mx-auto px-4 font-sans antialiased">
-      <div className="relative grid grid-cols-1 gap-20 md:grid-cols-2">
+    <div className="mx-auto px-4 antialiased">
+      <div className="relative grid grid-cols-1 gap-14 md:grid-cols-2">
         <div>
           <div className="relative h-80 w-full">
             <AnimatePresence>
@@ -72,7 +85,7 @@ export const AnimatedTestimonials = ({
                     rotate: randomRotateY(),
                   }}
                   animate={{
-                    opacity: isActive(index) ? 1 : 0.7,
+                    opacity: isActive(index) ? 1 : 0.5,
                     scale: isActive(index) ? 1 : 0.95,
                     z: isActive(index) ? 0 : -100,
                     rotate: isActive(index) ? 0 : randomRotateY(),
@@ -91,7 +104,7 @@ export const AnimatedTestimonials = ({
                     duration: 0.4,
                     ease: "easeInOut",
                   }}
-                  className="absolute inset-0 origin-bottom"
+                  className="border-antique-100 absolute inset-0 origin-bottom overflow-hidden rounded-3xl border shadow-xl"
                 >
                   {testimonial.type === "image" ? (
                     <img
@@ -103,17 +116,29 @@ export const AnimatedTestimonials = ({
                       className="h-full w-full rounded-3xl object-cover object-center shadow-2xl"
                     />
                   ) : testimonial.type === "video" ? (
-                    <video
-                      src={testimonial.src}
-                      width={500}
-                      height={500}
-                      draggable={false}
-                      muted
-                      ref={(el) => {
-                        videoRefs.current[index] = el;
-                      }}
-                      className="h-full w-full rounded-3xl object-cover object-center shadow-2xl"
-                    />
+                    <>
+                      <div className="from-antique-50 via-antique-50/95 via-antique-50/50 to-antique-50/0 absolute bottom-0 h-1/3 w-full bg-gradient-to-t"></div>
+                      <div className="absolute bottom-0 flex flex-col px-4 py-4">
+                        <p className="text-antique-900 font-bold">
+                          {testimonials[active]?.name}
+                        </p>
+                        <p className="text-antique-500 text-xs font-normal">
+                          {testimonials[active]?.designation}
+                        </p>
+                      </div>
+                      <video
+                        src={testimonial.src}
+                        width={500}
+                        height={500}
+                        draggable={false}
+                        muted
+                        ref={(el) => {
+                          videoRefs.current[index] = el;
+                        }}
+                        loop
+                        className="h-full w-full object-cover object-center"
+                      />
+                    </>
                   ) : null}
                 </motion.div>
               ))}
@@ -140,14 +165,14 @@ export const AnimatedTestimonials = ({
               ease: "easeInOut",
             }}
           >
-            <h3 className="text-antique-900 text-2xl font-bold">
-              {testimonials[active].name}
+            <h3 className="text-antique-500 pb-2 text-2xl font-bold">
+              {testimonials[active]?.title}
             </h3>
-            <p className="text-antique-500 text-sm dark:text-neutral-500">
-              {testimonials[active].designation}
+            <p className="text-antique-500 text-xs dark:text-neutral-500">
+              {testimonials[active]?.subtitle}
             </p>
-            <motion.p className="text-antique-500 mt-8 text-base dark:text-neutral-300">
-              {testimonials[active].quote.split(" ").map((word, index) => (
+            <motion.p className="text-antique-500 mt-4 text-sm dark:text-neutral-300">
+              {testimonials[active]?.quote.split(" ").map((word, index) => (
                 <motion.span
                   key={index}
                   initial={{
@@ -171,6 +196,31 @@ export const AnimatedTestimonials = ({
                 </motion.span>
               ))}
             </motion.p>
+            <div className="flex flex-wrap gap-2 pt-4">
+              {testimonials[active]?.tags?.map((tag, i) => (
+                <motion.div
+                  initial={{
+                    filter: "blur(10px)",
+                    opacity: 0,
+                    y: 5,
+                  }}
+                  animate={{
+                    filter: "blur(0px)",
+                    opacity: 1,
+                    y: 0,
+                  }}
+                  transition={{
+                    duration: 0.2,
+                    ease: "easeInOut",
+                    delay: 1 + 0.1 * i,
+                  }}
+                  className="bg-antique-500 rounded px-1 py-1"
+                  key={tag + testimonials[active]?.name}
+                >
+                  <p className="text-xs text-white">{tag}</p>
+                </motion.div>
+              ))}
+            </div>
           </motion.div>
           <div className="flex gap-4 pt-12 md:pt-0">
             <button
