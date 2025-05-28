@@ -76,14 +76,12 @@ const DATA = {
         url: "https://github.com/jacksontriffon",
         icon: Icons.github,
         onClick: () => {},
-        hasSeparator: false,
       },
       LinkedIn: {
         label: "LinkedIn",
         url: "https://www.linkedin.com/in/sj-triffon/",
         icon: Icons.linkedin,
         onClick: () => {},
-        hasSeparator: false,
       },
       email: {
         label: "Send Email",
@@ -95,14 +93,12 @@ const DATA = {
           });
         },
         icon: Icons.email,
-        hasSeparator: false,
       },
       calendar: {
         label: "Book a Meeting",
         url: "https://calendly.com/sj-triffon/quick-chat",
         icon: Icons.calendar,
         onClick: () => {},
-        hasSeparator: true,
       },
     },
   },
@@ -136,10 +132,6 @@ export function Navbar() {
           ))}
           <Separator orientation="vertical" className="h-full" />
           {Object.entries(DATA.contact.social).map(([name, social]) => (
-            // <>
-            //   {social.hasSeparator && (
-            //     <Separator key={name + '-separator'} orientation="vertical" className="h-full" />
-            //   )}
             <DockIcon key={name}>
               <Tooltip>
                 <TooltipTrigger asChild>
