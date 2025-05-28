@@ -5,6 +5,10 @@ import { cn } from "~/lib/utils";
 import { ShinyBento } from "./_components/templates/edge/ShinyBento";
 import { ResumeDownload } from "./_components/templates/resume/ResumeDownload";
 import { Hero } from "./_components/templates/hero/Hero";
+import { AntiqueDivider } from "./_components/templates/edge/PathsDrawEffect";
+import { BuildingIcon, HammerIcon, PenToolIcon } from "lucide-react";
+import { toast } from "sonner";
+import { Footer } from "./_components/templates/footer/Footer";
 
 export default async function Home() {
   return (
@@ -29,6 +33,7 @@ export default async function Home() {
           <section className="flex justify-center pb-40" id="resume">
             <ResumeDownload />
           </section>
+          <Footer />
         </div>
       </HydrateClient>
     </>

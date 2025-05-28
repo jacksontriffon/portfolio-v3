@@ -59,7 +59,7 @@ export const EmailCta = () => {
           window.location.href = buildMailto({
             to: "hello@sjcoded.com",
             subject: "Project enquiry via your portfolio",
-            body: "Hi SJ,%0A%0A",
+            body: "Hi SJ,",
           });
           toast("Opening default email application...", {
             icon: <EnvelopeClosedIcon />,
@@ -87,9 +87,6 @@ export const EmailCta = () => {
             Copied Email
           </span>
         </AnimatedSubscribeButton>
-        {/* <p className="text-antique-500 ml-12 text-sm font-bold">
-          - yes, these emails all send to me
-        </p> */}
       </div>
     </div>
   );
