@@ -35,7 +35,7 @@ export function ResumeDownload() {
         </a>
       </div>
       <div className="flex w-full items-center justify-center">
-        <div className="pointer-events-none absolute z-0 flex h-full w-full max-w-[1920px] flex-col items-center justify-center overflow-hidden">
+        <div className="pointer-events-none absolute z-0 flex h-full max-h-screen w-full max-w-[1920px] flex-col items-center justify-center overflow-hidden">
           <BackgroundBeams />
         </div>
         <PinContainer

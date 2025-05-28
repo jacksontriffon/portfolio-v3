@@ -34,7 +34,7 @@ export const PinContainer = ({
   return (
     <a
       className={cn(
-        "group/pin relative z-50 cursor-pointer",
+        "group/pin relative z-40 cursor-pointer",
         containerClassName,
       )}
       onClick={() => {

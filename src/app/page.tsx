@@ -9,14 +9,17 @@ import { cn } from "~/lib/utils";
 import { ShinyBento } from "./_components/templates/edge/ShinyBento";
 import { ResumeDownload } from "./_components/templates/resume/ResumeDownload";
 import { Projects } from "./_components/templates/projects/Projects";
+import { Navbar } from "./_components/molecules/Dock";
 
 export default async function Home() {
   return (
     <>
       <HydrateClient>
-        <div className="bg-[url(/paper.png)]">
+        <div className="relative bg-[url(/paper.png)]">
+          <Navbar />
+          <div id="top"></div>
           <Particles
-            className="absolute h-screen w-screen opacity-50"
+            className="absolute inset-0 h-screen w-full"
             color="#522b2d"
           />
           <div className="2xs:px-4 flex flex-col gap-32 px-1 py-20 text-white">
@@ -41,7 +44,7 @@ export default async function Home() {
               <ShinyBento />
             </div>
           </section>
-          <section className="flex justify-center pb-40">
+          <section className="flex justify-center pb-40" id="resume">
             <ResumeDownload />
           </section>
         </div>

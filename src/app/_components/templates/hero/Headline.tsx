@@ -17,7 +17,7 @@ export const Headline = () => {
           animation="scaleUp"
           by="character"
         >
-          Yes. Yes. Well done. You clicked it.
+          Hey hey! Look at you go ~!
         </TextAnimate>
       ) : (
         <TextAnimate
