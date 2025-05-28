@@ -1,14 +1,7 @@
+/* eslint-disable @typescript-eslint/no-empty-function */
 "use client";
 
-import {
-  ArrowUpIcon,
-  CalendarIcon,
-  DownloadCloudIcon,
-  HomeIcon,
-  MailIcon,
-  NewspaperIcon,
-  PencilIcon,
-} from "lucide-react";
+import { CalendarIcon, HomeIcon, MailIcon, NewspaperIcon } from "lucide-react";
 import Link from "next/link";
 import React from "react";
 
@@ -127,14 +120,6 @@ export function Navbar() {
                   <Link
                     href={item.href}
                     aria-label={item.label}
-                    // scroll={false}
-                    // onClick={(e) => {
-                    //   e.preventDefault();
-                    //   const el = document.getElementById(item.href);
-                    //   if (el) {
-                    //     el.scrollIntoView({ behavior: "smooth" });
-                    //   }
-                    // }}
                     className={cn(
                       buttonVariants({ variant: "ghost", size: "icon" }),
                       "text-antique-900 size-12 rounded-full",
@@ -151,32 +136,32 @@ export function Navbar() {
           ))}
           <Separator orientation="vertical" className="h-full" />
           {Object.entries(DATA.contact.social).map(([name, social]) => (
-            <div key={name} className="flex h-full gap-2">
-              {social.hasSeparator && (
-                <Separator orientation="vertical" className="h-full" />
-              )}
-              <DockIcon>
-                <Tooltip>
-                  <TooltipTrigger asChild>
-                    <Link
-                      target="_blank"
-                      href={social.url}
-                      aria-label={social.label}
-                      onClick={social.onClick}
-                      className={cn(
-                        buttonVariants({ variant: "ghost", size: "icon" }),
-                        "text-antique-900 size-12 rounded-full",
-                      )}
-                    >
-                      <social.icon className="size-4" />
-                    </Link>
-                  </TooltipTrigger>
-                  <TooltipContent>
-                    <p>{social.label}</p>
-                  </TooltipContent>
-                </Tooltip>
-              </DockIcon>
-            </div>
+            // <>
+            //   {social.hasSeparator && (
+            //     <Separator key={name + '-separator'} orientation="vertical" className="h-full" />
+            //   )}
+            <DockIcon key={name}>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Link
+                    target="_blank"
+                    href={social.url}
+                    aria-label={social.label}
+                    onClick={social.onClick}
+                    className={cn(
+                      buttonVariants({ variant: "ghost", size: "icon" }),
+                      "text-antique-900 size-12 rounded-full",
+                    )}
+                  >
+                    <social.icon className="size-4" />
+                  </Link>
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p>{social.label}</p>
+                </TooltipContent>
+              </Tooltip>
+            </DockIcon>
+            // </>
           ))}
         </Dock>
       </TooltipProvider>

@@ -42,7 +42,7 @@ export const Intro = () => {
 
   return (
     <div className="3xl:mx-auto flex max-w-[1920px] justify-between">
-      <section className="flex items-center justify-center gap-6 sm:justify-normal sm:px-20 sm:pt-10 lg:pr-40 lg:pl-10 xl:pl-40">
+      <section className="flex items-center justify-center gap-6 pt-10 sm:justify-normal sm:px-20 sm:pt-20 lg:pr-40 lg:pl-10 xl:pl-40">
         <div>
           {activeText !== introText.default ? (
             <ScratchMyFace
