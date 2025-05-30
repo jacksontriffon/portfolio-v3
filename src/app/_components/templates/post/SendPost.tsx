@@ -8,7 +8,7 @@ export const SendPost = () => {
   const [name, setName] = useState("");
   const createPost = api.post.create.useMutation({
     onSuccess: async () => {
-      await utils.post.invalidate();
+      await utils.post.listPaged.invalidate();
       setName("");
     },
   });

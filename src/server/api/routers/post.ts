@@ -26,6 +26,33 @@ export const postRouter = createTRPCRouter({
       });
     }),
 
+  listPaged: publicProcedure
+    .input(
+      z.object({
+        page: z.number().int().min(1).default(1),
+        limit: z.number().int().min(1).max(50).default(10),
+      }),
+    )
+    .query(async ({ ctx, input }) => {
+      const { page, limit } = input;
+      const [posts, total] = await ctx.db.$transaction([
+        ctx.db.post.findMany({
+          skip: (page - 1) * limit,
+          take: limit,
+          orderBy: { createdAt: "desc" },
+          include: {
+            createdBy: { select: { name: true, image: true } },
+          },
+        }),
+        ctx.db.post.count(),
+      ]);
+
+      return {
+        posts,
+        totalPages: Math.ceil(total / limit),
+      };
+    }),
+
   getLatest: protectedProcedure.query(async ({ ctx }) => {
     const post = await ctx.db.post.findFirst({
       orderBy: { createdAt: "desc" },
