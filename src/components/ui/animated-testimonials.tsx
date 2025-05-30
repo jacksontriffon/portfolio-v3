@@ -129,6 +129,7 @@ export const AnimatedTestimonials = ({
                         </p>
                       </div>
                       <video
+                        preload="auto"
                         src={testimonial.src}
                         width={500}
                         height={500}
