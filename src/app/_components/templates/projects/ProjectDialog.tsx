@@ -27,7 +27,7 @@ export function ProjectDialog() {
             Snippet of Projects
           </DialogTitle>
           <DialogDescription className="text-antique-500">
-            Explore projects I've done previously. Feel free to ask me any
+            Explore projects I&apos;ve done previously. Feel free to ask me any
             questions!
           </DialogDescription>
         </DialogHeader>

@@ -174,7 +174,9 @@ const GridItem = ({
   coolModeOptions,
 }: GridItemProps) => {
   return (
-    <li className={`min-h-[14rem] list-none ${area}`}>
+    <li
+      className={`min-h-[14rem] list-none ${area} pointer-events-none sm:pointer-events-auto`}
+    >
       <CoolMode options={coolModeOptions}>
         <div className="relative h-full rounded-2xl border p-2 md:rounded-3xl md:p-3">
           <GlowingEffect
