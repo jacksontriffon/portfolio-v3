@@ -97,7 +97,7 @@ export function LatestPosts() {
                 layout
                 className="flex min-h-[52px] items-center gap-3"
               >
-                <div className="border-antique-900 outline-antique-500 rounded-full border outline outline-offset-2">
+                <div className="border-antique-900 outline-antique-500 overflow-hidden rounded-full border outline outline-offset-2">
                   {post.createdBy.image ? (
                     <Image
                       src={post.createdBy.image ?? ""}
