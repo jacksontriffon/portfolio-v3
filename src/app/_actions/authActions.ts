@@ -8,6 +8,6 @@ export async function toggleAuth() {
   if (session) {
     await signOut();
   } else {
-    await signIn();
+    await signIn("", { redirectTo: "/#posts" });
   }
 }

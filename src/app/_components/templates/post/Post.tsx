@@ -7,7 +7,10 @@ import { SendPost } from "./SendPost";
 export async function Post() {
   const session = await auth();
   return (
-    <div className="text-antique-900 mb-20 flex w-full flex-col items-center justify-center gap-6">
+    <section
+      id="posts"
+      className="text-antique-900 mb-20 flex w-full flex-col items-center justify-center gap-6"
+    >
       <div className="flex w-full flex-col items-center gap-2">
         <div className="flex w-full max-w-[1440px] items-center justify-center gap-6 px-10">
           <AntiqueDivider />
@@ -32,6 +35,6 @@ export async function Post() {
         )}
         <AuthButton isSignedIn={!!session} />
       </div>
-    </div>
+    </section>
   );
 }
