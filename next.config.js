@@ -7,11 +7,18 @@ import "./src/env.js";
 /** @type {import("next").NextConfig} */
 const config = {
   typescript: {
-    // ⬅ the magic flag
     ignoreBuildErrors: true,
   },
   eslint: {
     ignoreDuringBuilds: true, // build never stops on lint
+  },
+  images: {
+    domains: [
+      // allow Google OAuth Images
+      "lh3.googleusercontent.com",
+      "lh4.googleusercontent.com",
+      "lh5.googleusercontent.com",
+    ],
   },
 };
 

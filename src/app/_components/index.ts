@@ -1,7 +1,7 @@
 // Only SERVER Components
 
 // --- Atoms ---
-export * from "~/app/_components/atoms/AuthButton";
+export * from "~/app/_components/auth/AuthButton";
 // --- Molecules ---
 export * from "~/app/_components/molecules/BentoCard";
 

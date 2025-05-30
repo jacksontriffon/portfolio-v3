@@ -5,10 +5,8 @@ import { cn } from "~/lib/utils";
 import { ShinyBento } from "./_components/templates/edge/ShinyBento";
 import { ResumeDownload } from "./_components/templates/resume/ResumeDownload";
 import { Hero } from "./_components/templates/hero/Hero";
-import { AntiqueDivider } from "./_components/templates/edge/PathsDrawEffect";
-import { BuildingIcon, HammerIcon, PenToolIcon } from "lucide-react";
-import { toast } from "sonner";
 import { Footer } from "./_components/templates/footer/Footer";
+import { Post } from "./_components/templates/post/Post";
 
 export default async function Home() {
   return (
@@ -16,7 +14,6 @@ export default async function Home() {
       <HydrateClient>
         <div className="relative bg-[url(/paper.png)]">
           <Hero />
-
           <div className="relative flex h-[500px] w-full flex-col items-center justify-center overflow-hidden rounded-lg pt-30">
             <DotPattern
               className={cn(
@@ -30,8 +27,11 @@ export default async function Home() {
               <ShinyBento />
             </div>
           </section>
-          <section className="flex justify-center pb-40" id="resume">
+          <section className="flex justify-center pb-0 sm:pb-40" id="resume">
             <ResumeDownload />
+          </section>
+          <section>
+            <Post />
           </section>
           <Footer />
         </div>
