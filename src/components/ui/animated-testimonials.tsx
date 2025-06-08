@@ -73,7 +73,7 @@ export const AnimatedTestimonials = ({
   };
   return (
     <div className="mx-auto px-4 antialiased">
-      <div className="relative grid grid-cols-1 gap-14 md:grid-cols-2">
+      <div className="relative grid grid-cols-1 gap-14 md:grid-cols-2 xl:pt-4">
         <div>
           <div className="relative h-80 w-full">
             <AnimatePresence>
@@ -124,7 +124,7 @@ export const AnimatedTestimonials = ({
                         <p className="text-antique-900 font-bold">
                           {testimonials[active]?.name}
                         </p>
-                        <p className="text-antique-500 text-xs font-normal">
+                        <p className="text-antique-500 text-sm font-normal">
                           {testimonials[active]?.designation}
                         </p>
                       </div>
@@ -151,6 +151,7 @@ export const AnimatedTestimonials = ({
         <div className="flex flex-col justify-between pt-4">
           <motion.div
             key={active}
+            className="flex flex-col lg:gap-1"
             initial={{
               y: 20,
               opacity: 0,
@@ -168,14 +169,14 @@ export const AnimatedTestimonials = ({
               ease: "easeInOut",
             }}
           >
-            <h3 className="text-antique-500 pb-2 text-2xl font-bold">
+            <h3 className="text-antique-500 pb-2 text-2xl font-bold lg:text-3xl">
               {testimonials[active]?.title}
             </h3>
-            <p className="text-antique-500 text-xs dark:text-neutral-500">
+            <p className="text-antique-500 text-sm lg:text-base dark:text-neutral-500">
               {testimonials[active]?.subtitle}
             </p>
             <TextAnimate
-              className="text-antique-500 mt-4 text-sm whitespace-pre-line"
+              className="text-antique-500 mt-4 text-base whitespace-pre-line lg:text-xl"
               animation="blurIn"
               by="word"
               duration={1}
@@ -204,7 +205,9 @@ export const AnimatedTestimonials = ({
                   className="border-antique-100 rounded border px-1 py-1"
                   key={tag + testimonials[active]?.name}
                 >
-                  <p className="text-antique-500 text-xs font-medium">{tag}</p>
+                  <p className="text-antique-500 text-sm font-medium lg:text-base">
+                    {tag}
+                  </p>
                 </motion.div>
               ))}
             </div>

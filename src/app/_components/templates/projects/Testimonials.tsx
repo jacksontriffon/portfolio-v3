@@ -19,7 +19,7 @@ export function ProjectTestimonials() {
       tags: ["WebGL", "TypeScript", "Next.js", "React"],
       buttonOrLink: (
         <a
-          className="text-antique-500 text-sm underline"
+          className="text-antique-500 text-base underline lg:text-xl"
           href="https://raurir.com/"
           target="_blank"
           rel="noopener noreferrer"
@@ -41,7 +41,7 @@ export function ProjectTestimonials() {
       tags: ["React", "TypeScript", "MongoDB", "Express", "AWS"],
       buttonOrLink: (
         <a
-          className="text-antique-500 text-sm underline"
+          className="text-antique-500 text-base underline lg:text-xl"
           target="_blank"
           rel="noopener noreferrer"
           href="https://mpcc.meiji.co.jp/"
@@ -63,7 +63,7 @@ export function ProjectTestimonials() {
       tags: ["iOS", "Android", "i18n", "Mobile-First", "Offline Support"],
       buttonOrLink: (
         <a
-          className="text-antique-500 text-sm underline"
+          className="text-antique-500 text-base underline lg:text-xl"
           target="_blank"
           rel="noopener noreferrer"
           href="https://www.thrivebyfive.com/"
