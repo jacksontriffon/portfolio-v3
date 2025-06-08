@@ -40,9 +40,6 @@ export const Headline = () => {
           <p
             className={cn(
               "text-antique-500 absolute -right-4 -bottom-8 -rotate-6 text-sm font-medium",
-              {
-                "active:opacity-0 sm:active:opacity-100": pressed,
-              },
             )}
           >
             {pressed ? "Nice. 😎" : "👆 Click me!"}
