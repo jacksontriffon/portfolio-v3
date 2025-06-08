@@ -5,6 +5,7 @@ import { CoolMode } from "~/components/magicui/cool-mode";
 import { AnimatedShinyText } from "~/components/magicui/animated-shiny-text";
 import { SparklesText } from "~/app/_components/atoms/SparklesText";
 import { useState } from "react";
+import { cn } from "~/lib/utils";
 
 export const Headline = () => {
   const [pressed, setPressed] = useState(false);
@@ -36,7 +37,14 @@ export const Headline = () => {
           attractive
         </SparklesText>
         <div className="relative w-fit">
-          <p className="text-antique-500 absolute -right-4 -bottom-8 -rotate-6 text-sm font-medium">
+          <p
+            className={cn(
+              "text-antique-500 absolute -right-4 -bottom-8 -rotate-6 text-sm font-medium",
+              {
+                "active:opacity-0 sm:active:opacity-100": pressed,
+              },
+            )}
+          >
             {pressed ? "Nice. 😎" : "👆 Click me!"}
           </p>
           <div className="bg-antique-50/50">

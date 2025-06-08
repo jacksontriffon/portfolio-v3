@@ -1,8 +1,6 @@
 import { ThreeDMarquee, type Media } from "~/components/ui/3d-marquee";
 import { ProjectDialog } from "./ProjectDialog";
 import { cn } from "~/lib/utils";
-import { AntiqueDivider } from "../edge/PathsDrawEffect";
-import { ShinyButton } from "~/components/magicui/shiny-button";
 
 export const Projects = () => {
   const media: Media[] = [

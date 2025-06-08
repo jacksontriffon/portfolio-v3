@@ -59,13 +59,13 @@ export const Intro = () => {
               src={"/SJ's face.png"}
               alt="SJ's face, smiling casually."
               priority
-              width={80}
-              height={80}
-              className="border-antique-900 outline-antique-900 hover:shadow-antique-100 cursor-pointer rounded-full border-2 shadow-xl outline-1 outline-offset-2 transition-all duration-300 hover:-translate-y-1 active:scale-95"
+              width={120}
+              height={120}
+              className="border-antique-900 outline-antique-900 hover:shadow-antique-100 w-32 cursor-pointer rounded-full border-2 shadow-xl outline-1 outline-offset-2 transition-all duration-300 hover:-translate-y-1 active:scale-95"
             />
           )}
         </div>
-        <div className="text-antique-900 flex max-w-72 flex-col gap-2">
+        <div className="text-antique-900 flex max-w-96 flex-col gap-2">
           <AnimatePresence mode="wait">
             <div className="flex flex-col gap-1">
               <motion.h2
@@ -74,7 +74,7 @@ export const Intro = () => {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -5 }}
                 transition={{ duration: 0.3 }}
-                className="text-2xl"
+                className="text-3xl"
               >
                 {activeText.title}
               </motion.h2>
@@ -85,7 +85,7 @@ export const Intro = () => {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -5 }}
                 transition={{ duration: 0.3 }}
-                className="text-sm"
+                className="text-base"
               >
                 {activeText.description}
               </motion.p>
