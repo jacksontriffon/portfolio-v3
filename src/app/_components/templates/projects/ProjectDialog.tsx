@@ -3,18 +3,23 @@ import {
   Dialog,
   DialogContent,
   DialogDescription,
-  DialogFooter,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
 } from "~/components/ui/dialog";
 import { ProjectTestimonials } from "./Testimonials";
+import type { ComponentProps } from "react";
 
-export function ProjectDialog() {
+export function ProjectDialog({
+  buttonProps,
+}: {
+  buttonProps?: ComponentProps<"button">;
+}) {
   return (
     <Dialog>
       <DialogTrigger asChild>
         <Button
+          {...buttonProps}
           variant="outline"
           className="text-antique-900 w-fit cursor-pointer"
         >
@@ -34,9 +39,6 @@ export function ProjectDialog() {
         <div className="py-4">
           <ProjectTestimonials />
         </div>
-        {/* <DialogFooter>
-          <Button className="bg-antique-900">Send Email</Button>
-        </DialogFooter> */}
       </DialogContent>
     </Dialog>
   );

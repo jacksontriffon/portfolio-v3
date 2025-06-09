@@ -1,6 +1,7 @@
 import { ThreeDMarquee, type Media } from "~/components/ui/3d-marquee";
 import { ProjectDialog } from "./ProjectDialog";
 import { cn } from "~/lib/utils";
+import posthog from "posthog-js";
 
 export const Projects = () => {
   const media: Media[] = [
@@ -62,7 +63,13 @@ export const Projects = () => {
           <br /> Click below for details!
         </p>
         <div className="pointer-events-auto">
-          <ProjectDialog />
+          <ProjectDialog
+            buttonProps={{
+              onClick: () => {
+                posthog.capture("viewing-projects");
+              },
+            }}
+          />
         </div>
       </div>
       <div
