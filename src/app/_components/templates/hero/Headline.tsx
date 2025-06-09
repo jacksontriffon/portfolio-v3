@@ -6,9 +6,23 @@ import { AnimatedShinyText } from "~/components/magicui/animated-shiny-text";
 import { SparklesText } from "~/app/_components/atoms/SparklesText";
 import { useState } from "react";
 import { cn } from "~/lib/utils";
+import { useInterval } from "usehooks-ts";
+import posthog from "posthog-js";
 
 export const Headline = () => {
   const [pressed, setPressed] = useState(false);
+  const [secondsPressed, setSecondsPressed] = useState(0);
+
+  useInterval(
+    () => {
+      if (pressed) {
+        console.log("seconds ", secondsPressed);
+        setSecondsPressed((prev) => prev + 1);
+        posthog.capture("hero-button-pressed", { secondsPressed });
+      }
+    },
+    pressed ? 1000 : null,
+  );
 
   return (
     <div className="flex flex-col gap-3 text-2xl font-bold sm:text-3xl">
