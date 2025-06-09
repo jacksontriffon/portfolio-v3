@@ -12,6 +12,7 @@ export const metadata: Metadata = {
 };
 
 import { Zilla_Slab } from "next/font/google";
+import { PostHogProvider } from "./providers";
 
 const zillaSlab = Zilla_Slab({
   subsets: ["latin"],
@@ -25,8 +26,10 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${zillaSlab.variable}`}>
       <body>
-        <TRPCReactProvider>{children}</TRPCReactProvider>
-        <Toaster />
+        <PostHogProvider>
+          <TRPCReactProvider>{children}</TRPCReactProvider>
+          <Toaster />
+        </PostHogProvider>
       </body>
     </html>
   );

@@ -7,6 +7,7 @@ import { WordRotate } from "~/components/magicui/word-rotate";
 import { InteractiveHoverButton } from "~/components/magicui/interactive-hover-button";
 import { toast } from "sonner";
 import { EnvelopeClosedIcon } from "@radix-ui/react-icons";
+import posthog from "posthog-js";
 
 const emails = [
   "sayHello",
@@ -65,6 +66,7 @@ export const EmailCta = () => {
             icon: <EnvelopeClosedIcon />,
             dismissible: true,
           });
+          posthog.capture("opening-email-provider");
         }}
         className="text-antique-900 sm:col-span-17 sm:ml-auto"
       >
