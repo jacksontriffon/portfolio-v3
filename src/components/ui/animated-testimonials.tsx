@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from "motion/react";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { useInterval } from "usehooks-ts";
 import { TextAnimate } from "../magicui/text-animate";
+import posthog from "posthog-js";
 
 export type Testimonial = {
   quote: string;
@@ -53,11 +54,13 @@ export const AnimatedTestimonials = ({
   };
 
   const handleNext = () => {
+    posthog.capture("next-project-clicked");
     setActive((prev) => (prev + 1) % testimonials.length);
     restartTimer();
   };
 
   const handlePrev = () => {
+    posthog.capture("previous-project-clicked");
     setActive((prev) => (prev - 1 + testimonials.length) % testimonials.length);
     restartTimer();
   };
@@ -183,7 +186,26 @@ export const AnimatedTestimonials = ({
             >
               {testimonials[active]?.quote ?? ""}
             </TextAnimate>
-            {testimonials[active]?.buttonOrLink}
+            <motion.div
+              initial={{
+                filter: "blur(10px)",
+                opacity: 0,
+                y: 5,
+              }}
+              animate={{
+                filter: "blur(0px)",
+                opacity: 1,
+                y: 0,
+              }}
+              transition={{
+                duration: 0.2,
+                ease: "easeInOut",
+                delay: 1,
+              }}
+              key={testimonials[active]?.name + "-link"}
+            >
+              {testimonials[active]?.buttonOrLink}
+            </motion.div>
             <div className="flex flex-wrap gap-2 pt-4">
               {testimonials[active]?.tags?.map((tag, i) => (
                 <motion.div

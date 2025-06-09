@@ -1,8 +1,24 @@
-import { ShinyButton } from "~/components/magicui/shiny-button";
+import posthog from "posthog-js";
 import {
   AnimatedTestimonials,
   type Testimonial,
 } from "~/components/ui/animated-testimonials";
+
+const ProjectLink = ({ href, label }: { href: string; label?: string }) => (
+  <a
+    onClick={() => {
+      posthog.capture("project-link-clicked", {
+        link: { href },
+      });
+    }}
+    className="text-antique-500 text-base underline lg:text-xl"
+    href={href}
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    {label || href}
+  </a>
+);
 
 export function ProjectTestimonials() {
   const testimonials: Testimonial[] = [
@@ -17,16 +33,7 @@ export function ProjectTestimonials() {
       src: "/adf/silly-but-relevant-ui-overlays.mov",
       type: "video",
       tags: ["WebGL", "TypeScript", "Next.js", "React"],
-      buttonOrLink: (
-        <a
-          className="text-antique-500 text-base underline lg:text-xl"
-          href="https://raurir.com/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          https://raurir.com/
-        </a>
-      ),
+      buttonOrLink: <ProjectLink href="https://raurir.com/" />,
     },
     {
       title: "Japan's Chocolate Loyalty Platform by Meiji",
@@ -40,14 +47,10 @@ export function ProjectTestimonials() {
       type: "video",
       tags: ["React", "TypeScript", "MongoDB", "Express", "AWS"],
       buttonOrLink: (
-        <a
-          className="text-antique-500 text-base underline lg:text-xl"
-          target="_blank"
-          rel="noopener noreferrer"
+        <ProjectLink
+          label="View Japanese Website"
           href="https://mpcc.meiji.co.jp/"
-        >
-          View Japanese Website
-        </a>
+        />
       ),
     },
     {
@@ -61,16 +64,7 @@ export function ProjectTestimonials() {
       src: "/edtech/ThriveByFive - Square.mp4",
       type: "video",
       tags: ["iOS", "Android", "i18n", "Mobile-First", "Offline Support"],
-      buttonOrLink: (
-        <a
-          className="text-antique-500 text-base underline lg:text-xl"
-          target="_blank"
-          rel="noopener noreferrer"
-          href="https://www.thrivebyfive.com/"
-        >
-          https://www.thrivebyfive.com/
-        </a>
-      ),
+      buttonOrLink: <ProjectLink href="https://www.thrivebyfive.com/" />,
     },
   ];
   return <AnimatedTestimonials testimonials={testimonials} />;
