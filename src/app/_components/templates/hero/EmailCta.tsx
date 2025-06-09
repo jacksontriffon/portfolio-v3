@@ -75,6 +75,7 @@ export const EmailCta = () => {
       <div className="col-span-19 flex w-full flex-col items-center sm:items-start">
         <AnimatedSubscribeButton
           onClick={async () => {
+            posthog.capture("copying-email", { email: currentEmail });
             await copy(currentEmail);
           }}
           className="bg-antique-50/0 text-antique-700 text-sm transition duration-150 hover:scale-105 active:scale-90"
