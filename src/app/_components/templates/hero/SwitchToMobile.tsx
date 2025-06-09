@@ -4,6 +4,7 @@ import DottedButton from "../../atoms/DottedButton";
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { cn } from "~/lib/utils";
+import posthog from "posthog-js";
 
 export const SwitchToMobile = () => {
   const [showPhone, setShowPhone] = useState(false);
@@ -19,6 +20,7 @@ export const SwitchToMobile = () => {
     >
       <DottedButton
         onClick={() => {
+          posthog.capture("view-on-mobile");
           setShowPhone((prev) => !prev);
         }}
       >
