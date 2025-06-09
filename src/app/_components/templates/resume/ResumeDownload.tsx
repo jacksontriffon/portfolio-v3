@@ -42,14 +42,14 @@ export function ResumeDownload() {
         </div>
         <PinContainer
           title="Download Resume"
-          onClick={() => {
-            posthog.capture("resume-downloaded");
-          }}
           href="/resume/SJ's-Resume.pdf"
           className="aspect-[1/1.414] max-h-[70dvh] w-screen max-w-[80dvw] sm:h-screen sm:w-auto xl:max-h-[700px]"
         >
           <Image
             className="h-full w-full"
+            onClick={() => {
+              posthog.capture("resume-downloaded");
+            }}
             src={"/resume/resume-page-1.svg"}
             width={800}
             height={1600}
