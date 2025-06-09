@@ -4,6 +4,7 @@ import { ScratchMyFace } from "~/app/_components/molecules/ScratchMyFace";
 import { useState, type JSX } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { SwitchToMobile } from "./SwitchToMobile";
+import posthog from "posthog-js";
 
 const introText = {
   default: {
@@ -47,6 +48,7 @@ export const Intro = () => {
           {activeText !== introText.default ? (
             <ScratchMyFace
               onComplete={() => {
+                posthog.capture("face-revealed");
                 setActiveText(introText.faceRevealed);
               }}
             />
@@ -54,7 +56,8 @@ export const Intro = () => {
             <Image
               onClick={() => {
                 if (activeText === introText.default)
-                  setActiveText(introText.faceClicked);
+                  posthog.capture("face-clicked");
+                setActiveText(introText.faceClicked);
               }}
               src={"/SJ's face.png"}
               alt="SJ's face, smiling casually."
