@@ -17,6 +17,7 @@ import { cn } from "~/lib/utils";
 import { Dock, DockIcon } from "~/components/magicui/dock";
 import { toast } from "sonner";
 import { EnvelopeClosedIcon } from "@radix-ui/react-icons";
+import posthog from "posthog-js";
 
 export type IconProps = React.HTMLAttributes<SVGElement>;
 
@@ -75,18 +76,23 @@ const DATA = {
         label: "GitHub",
         url: "https://github.com/jacksontriffon",
         icon: Icons.github,
-        onClick: () => {},
+        onClick: () => {
+          posthog.capture("github-clicked");
+        },
       },
       LinkedIn: {
         label: "LinkedIn",
         url: "https://www.linkedin.com/in/sj-triffon/",
         icon: Icons.linkedin,
-        onClick: () => {},
+        onClick: () => {
+          posthog.capture("linkedin-clicked");
+        },
       },
       email: {
         label: "Send Email",
         url: "mailto:who@sjcoded.com",
         onClick: () => {
+          posthog.capture("email-nav-clicked");
           toast("Opening default email application...", {
             icon: <EnvelopeClosedIcon />,
             dismissible: true,
@@ -98,7 +104,9 @@ const DATA = {
         label: "Book a Meeting",
         url: "https://calendly.com/sj-triffon/quick-chat",
         icon: Icons.calendar,
-        onClick: () => {},
+        onClick: () => {
+          posthog.capture("book-meeting-clicked");
+        },
       },
     },
   },
@@ -114,6 +122,14 @@ export function Navbar() {
               <Tooltip>
                 <TooltipTrigger asChild>
                   <Link
+                    onMouseEnter={() => {
+                      posthog.capture("nav-link-hovered");
+                    }}
+                    onClick={() => {
+                      posthog.capture("nav-scroll-to-clicked", {
+                        section: item.label,
+                      });
+                    }}
                     href={item.href}
                     aria-label={item.label}
                     className={cn(
@@ -136,6 +152,9 @@ export function Navbar() {
               <Tooltip>
                 <TooltipTrigger asChild>
                   <Link
+                    onMouseEnter={() => {
+                      posthog.capture("nav-link-hovered");
+                    }}
                     target="_blank"
                     href={social.url}
                     aria-label={social.label}
