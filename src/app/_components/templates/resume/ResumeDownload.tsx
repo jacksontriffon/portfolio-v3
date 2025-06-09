@@ -7,6 +7,7 @@ import { ShinyButton } from "~/components/magicui/shiny-button";
 import { BackgroundBeams } from "~/components/ui/background-beams";
 import { toast } from "sonner";
 import { DownloadIcon } from "lucide-react";
+import posthog from "posthog-js";
 
 export function ResumeDownload() {
   return (
@@ -25,6 +26,7 @@ export function ResumeDownload() {
               icon: <DownloadIcon />,
               dismissible: true,
             });
+            posthog.capture("resume-downloaded");
           }}
           href="/resume/SJ's-Resume.pdf"
           download
@@ -40,6 +42,9 @@ export function ResumeDownload() {
         </div>
         <PinContainer
           title="Download Resume"
+          onClick={() => {
+            posthog.capture("resume-downloaded");
+          }}
           href="/resume/SJ's-Resume.pdf"
           className="aspect-[1/1.414] max-h-[70dvh] w-screen max-w-[80dvw] sm:h-screen sm:w-auto xl:max-h-[700px]"
         >
